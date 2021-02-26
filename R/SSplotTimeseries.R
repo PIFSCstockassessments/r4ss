@@ -72,15 +72,7 @@ SSplotTimeseries <-
 
     if (missing(subplot)) stop("'subplot' input required")
     if (length(subplot) > 1) stop("function can only do 1 subplot at a time")
-    # subfunction to write png files
-    pngfun <- function(file, caption = NA) {
-      png(
-        filename = file.path(plotdir, file),
-        width = pwidth, height = pheight, units = punits, res = res, pointsize = ptsize
-      )
-      plotinfo <- rbind(plotinfo, data.frame(file = file, caption = caption))
-      return(plotinfo)
-    }
+    # table to store information on each plot
     plotinfo <- NULL
 
     # default labels that are passed from SS_plots but available if running

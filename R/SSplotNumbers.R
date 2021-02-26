@@ -80,16 +80,8 @@ SSplotNumbers <-
            plotdir = "default",
            mainTitle = FALSE,
            verbose = TRUE) {
-    # plot various things related to numbers-at-age for Stock Synthesis
-    # subfunction to write png files
-    pngfun <- function(file, caption = NA) {
-      png(
-        filename = file.path(plotdir, file),
-        width = pwidth, height = pheight, units = punits, res = res, pointsize = ptsize
-      )
-      plotinfo <- rbind(plotinfo, data.frame(file = file, caption = caption))
-      return(plotinfo)
-    }
+
+    # table to store information on each plot
     plotinfo <- NULL
 
     natage <- replist[["natage"]]
