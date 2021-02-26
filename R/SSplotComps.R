@@ -189,15 +189,7 @@ SSplotComps <-
     ### subplot 24: bubble plot comparison of length or age residuals
     ###             across fleets within partition
 
-    # subfunction to write png files
-    pngfun <- function(file, caption = NA) {
-      png(
-        filename = file.path(plotdir, file),
-        width = pwidth, height = pheight, units = punits, res = res, pointsize = ptsize
-      )
-      plotinfo <- rbind(plotinfo, data.frame(file = file, caption = caption))
-      return(plotinfo)
-    }
+    # table to store information on each plot
     plotinfo <- NULL
 
     SS_versionNumeric <- replist[["SS_versionNumeric"]]
@@ -1243,7 +1235,9 @@ SSplotComps <-
               } # end test for datonly
 
               # add caption to the plotinfo table (normally done by pngfun)
-              plotinfo <- rbind(plotinfo, data.frame(file = file, caption = caption))
+              plotinfo <- rbind(plotinfo, data.frame(file = file,
+                                                     caption = caption,
+                                                     alt_text = NA))
 
               dev.off() # close device if png
             } # end test for print to PNG option
@@ -1309,7 +1303,9 @@ SSplotComps <-
                 )
               } # end test for datonly
               # add caption to the plotinfo table (normally done by pngfun)
-              plotinfo <- rbind(plotinfo, data.frame(file = file, caption = caption))
+              plotinfo <- rbind(plotinfo, data.frame(file = file,
+                                                     caption = caption,
+                                                     alt_text = NA))
               dev.off() # close device if png
             } # end test for print to PNG option
           }

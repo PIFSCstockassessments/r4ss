@@ -115,15 +115,7 @@ SSplotIndices <-
 
     # define a bunch of internal functions
 
-    # subfunction to write png files
-    pngfun <- function(file, caption = NA) {
-      png(
-        filename = file.path(plotdir, file),
-        width = pwidth, height = pheight, units = punits, res = res, pointsize = ptsize
-      )
-      plotinfo <- rbind(plotinfo, data.frame(file = file, caption = caption))
-      return(plotinfo)
-    }
+    # table to store information on each plot
     plotinfo <- NULL
 
 

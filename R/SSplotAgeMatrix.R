@@ -60,15 +60,7 @@ SSplotAgeMatrix <- function(replist, option = 1, slices = NULL,
                             cex.main = 1, mainTitle = TRUE, plotdir = "default") {
   # in-development function to plot matrix of length at age
 
-  # subfunction to write png files
-  pngfun <- function(file, caption = NA) {
-    png(
-      filename = file.path(plotdir, file),
-      width = pwidth, height = pheight, units = punits, res = res, pointsize = ptsize
-    )
-    plotinfo <- rbind(plotinfo, data.frame(file = file, caption = caption))
-    return(plotinfo)
-  }
+  # table to store information on each plot
   plotinfo <- NULL
   if (plotdir == "default") {
     plotdir <- replist[["inputs"]][["dir"]]

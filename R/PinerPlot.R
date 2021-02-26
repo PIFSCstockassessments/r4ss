@@ -109,15 +109,9 @@ PinerPlot <-
     # this function is very similar to SSplotProfile, but shows fleet-specific likelihoods
     # for a single components rather than multiple components aggregated across fleets
 
-    # subfunction to write png files
-    pngfun <- function(file) {
-      png(
-        filename = file.path(plotdir, file), width = pwidth, height = pheight,
-        units = punits, res = res, pointsize = ptsize
-      )
+    if (print & is.null(plotdir)) {
+      stop("to print PNG files, you must supply a directory as 'plotdir'")
     }
-
-    if (print & is.null(plotdir)) stop("to print PNG files, you must supply a directory as 'plotdir'")
 
     # get stuff from summary output into shorter variable names
     n <- summaryoutput[["n"]]
