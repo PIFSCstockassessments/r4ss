@@ -266,7 +266,10 @@ SSplotAgeMatrix <- function(replist, option = 1, slices = NULL,
       if (option == 2) {
         caption <- paste(titleStart, "\n", labels[5], islice)
       }
-      plotinfo <- pngfun(file = file, caption = caption)
+      plotinfo <- pngfun(
+        plotinfo = plotinfo, file = file, plotdir = plotdir, pwidth = pwidth, pheight = pheight,
+        punits = punits, res = res, ptsize = ptsize, caption = caption
+      )
       AgeMatrix.fn(slice = islice)
       dev.off()
     }

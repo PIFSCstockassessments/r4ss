@@ -13,7 +13,14 @@
 #' @param alt_text alternative text for screen readers (may match caption in some cases)
 #' @author Ian G. Taylor
 
-pngfun <- function(file,
+pngfun <- function(plotinfo,
+                   file,
+                   plotdir,
+                   pwidth,
+                   pheight,
+                   punits,
+                   res,
+                   ptsize,
                    caption = NA,
                    alt_text = NA,
                    filenameprefix = "",

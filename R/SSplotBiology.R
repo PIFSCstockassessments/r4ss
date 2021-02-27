@@ -101,7 +101,8 @@ SSplotBiology <-
              "Hermaphroditism transition rate", # 13
              "Fraction females by age at equilibrium"
            ), # 14
-           pwidth = 6.5, pheight = 5.0, punits = "in", res = 300, ptsize = 10, cex.main = 1,
+           pwidth = 6.5, pheight = 5.0,
+           punits = "in", res = 300, ptsize = 10, cex.main = 1,
            mainTitle = TRUE, verbose = TRUE) {
     #### current (Aug 18, 2017) order of plots:
     # subplot 1: growth_curve_fn - growth curve only
@@ -327,7 +328,7 @@ SSplotBiology <-
       growdat[["CV_Beg"]] <- growdat[["SD_Beg"]] / growdat[["Len_Beg"]]
       # female growth
       growdatF <- growdat[growdat[["Sex"]] == 1 &
-                          growdat[["Morph"]] == morphs[1], ]
+        growdat[["Morph"]] == morphs[1], ]
       growdatF[["Sd_Size"]] <- growdatF[["SD_Beg"]]
       if (growthCVtype == "logSD=f(A)") { # lognormal distribution of length at age
         growdatF[["high"]] <- qlnorm(0.975, meanlog = log(growdatF[["Len_Beg"]]), sdlog = growdatF[["Sd_Size"]])
@@ -384,14 +385,16 @@ SSplotBiology <-
         if (nsexes > 1) {
           lines(x, biology[["Wt_len_M"]], type = "o", col = colvec[2])
           if (!add) {
-            legend(legendloc, bty = "n", c("Females", "Males"),
-                   lty = 1, col = c(colvec[1], colvec[2]))
+            legend(legendloc,
+              bty = "n", c("Females", "Males"),
+              lty = 1, col = c(colvec[1], colvec[2])
+            )
           }
         }
       } else { ## if empirical weight-at-age IS used
         wtmat <- wtatage[wtatage[["Fleet"]] == -1 &
-                         wtatage[["Sex"]] == sex &
-                         wtatage[["Seas"]] == seas, -(2:6)]
+          wtatage[["Sex"]] == sex &
+          wtatage[["Seas"]] == seas, -(2:6)]
         wtmat <- clean_wtatage(wtmat)
         if (!is.null(wtmat)) {
           ## persp(x=abs(wtmat[["Yr"]]), y=0:accuage,
@@ -714,10 +717,12 @@ SSplotBiology <-
           "estimated 95% uncertainty intervals in estimated mean growth."
         )
       }
-      plotinfo <- pngfun(file = file, caption = caption)
+      plotinfo <- pngfun(
+        plotinfo = plotinfo, file = file, plotdir = plotdir, pwidth = pwidth, pheight = pheight,
+        punits = punits, res = res, ptsize = ptsize, caption = caption
+      )
       growth_curve_fn()
       dev.off()
-      # plotinfo <- rbind(plotinfo,data.frame(file=file,caption=caption))
     }
 
 
@@ -883,10 +888,12 @@ SSplotBiology <-
         "CV (thick line) and SD (thin line) of",
         "length at age shown in top-right and lower-left panels"
       )
-      plotinfo <- pngfun(file = file, caption = caption)
+      plotinfo <- pngfun(
+        plotinfo = plotinfo, file = file, plotdir = plotdir, pwidth = pwidth, pheight = pheight,
+        punits = punits, res = res, ptsize = ptsize, caption = caption
+      )
       growth_curve_plus_fn(option = 1)
       dev.off()
-      # plotinfo <- rbind(plotinfo,data.frame(file=file,caption=caption))
     }
 
     # make plots of growth curve with weight-length curve and maturity
@@ -900,10 +907,12 @@ SSplotBiology <-
         "weight (thick line) and maturity (thin line)",
         "shown in top-right and lower-left panels"
       )
-      plotinfo <- pngfun(file = file, caption = caption)
+      plotinfo <- pngfun(
+        plotinfo = plotinfo, file = file, plotdir = plotdir, pwidth = pwidth, pheight = pheight,
+        punits = punits, res = res, ptsize = ptsize, caption = caption
+      )
       growth_curve_plus_fn(option = 2)
       dev.off()
-      # plotinfo <- rbind(plotinfo,data.frame(file=file,caption=caption))
     }
 
 
@@ -920,7 +929,7 @@ SSplotBiology <-
         )
         # SSplotAgeMatrix adds a "category" column which isn't present
         # in plotinfo until the end of this SSplotBiology function.
-        plotinfo.tmp <- plotinfo.tmp[, c("file", "caption")]
+        plotinfo.tmp <- plotinfo.tmp[, c("file", "caption", "alt_text")]
         plotinfo <- rbind(plotinfo, plotinfo.tmp)
       } else {
         cat(
@@ -1030,7 +1039,10 @@ SSplotBiology <-
     if (print & 101 %in% subplots & !wtatage_switch) {
       file <- "bio101_growth_illustration.png"
       caption <- "Illustration of growth parameters"
-      plotinfo <- pngfun(file = file, caption = caption)
+      plotinfo <- pngfun(
+        plotinfo = plotinfo, file = file, plotdir = plotdir, pwidth = pwidth, pheight = pheight,
+        punits = punits, res = res, ptsize = ptsize, caption = caption
+      )
       growth_curve_labeled_fn(option = 1)
       dev.off()
     }
@@ -1038,7 +1050,10 @@ SSplotBiology <-
     if (print & 102 %in% subplots & !wtatage_switch) {
       file <- "bio102_growth_illustration2.png"
       caption <- "Illustration of growth parameters with male offsets"
-      plotinfo <- pngfun(file = file, caption = caption)
+      plotinfo <- pngfun(
+        plotinfo = plotinfo, file = file, plotdir = plotdir, pwidth = pwidth, pheight = pheight,
+        punits = punits, res = res, ptsize = ptsize, caption = caption
+      )
       growth_curve_labeled_fn(option = 2)
       dev.off()
     }
@@ -1195,7 +1210,10 @@ SSplotBiology <-
     if (print & 103 %in% subplots & !wtatage_switch) {
       file <- "bio103_CV_illustration.png"
       caption <- "Illustration of growth variability parameters"
-      plotinfo <- pngfun(file = file, caption = caption)
+      plotinfo <- pngfun(
+        plotinfo = plotinfo, file = file, plotdir = plotdir, pwidth = pwidth, pheight = pheight,
+        punits = punits, res = res, ptsize = ptsize, caption = caption
+      )
       CV_values_labeled_fn(option = 1)
       dev.off()
     }
@@ -1203,7 +1221,10 @@ SSplotBiology <-
     if (print & 104 %in% subplots & !wtatage_switch) {
       file <- "bio104_CV_illustration2.png"
       caption <- "Illustration of growth variability parameters with male offsets"
-      plotinfo <- pngfun(file = file, caption = caption)
+      plotinfo <- pngfun(
+        plotinfo = plotinfo, file = file, plotdir = plotdir, pwidth = pwidth, pheight = pheight,
+        punits = punits, res = res, ptsize = ptsize, caption = caption
+      )
       CV_values_labeled_fn(option = 2)
       dev.off()
     }
@@ -1211,7 +1232,10 @@ SSplotBiology <-
     if (print & 105 %in% subplots & !wtatage_switch) {
       file <- "bio105_CV_illustration.png"
       caption <- "Illustration of growth variability parameters for offset type 3"
-      plotinfo <- pngfun(file = file, caption = caption)
+      plotinfo <- pngfun(
+        plotinfo = plotinfo, file = file, plotdir = plotdir, pwidth = pwidth, pheight = pheight,
+        punits = punits, res = res, ptsize = ptsize, caption = caption
+      )
       CV_values_labeled_fn(option = 3)
       dev.off()
     }
@@ -1219,7 +1243,10 @@ SSplotBiology <-
     if (print & 106 %in% subplots & !wtatage_switch) {
       file <- "bio106_CV_illustration2.png"
       caption <- "Illustration of growth variability parameters with male offsets"
-      plotinfo <- pngfun(file = file, caption = caption)
+      plotinfo <- pngfun(
+        plotinfo = plotinfo, file = file, plotdir = plotdir, pwidth = pwidth, pheight = pheight,
+        punits = punits, res = res, ptsize = ptsize, caption = caption
+      )
       CV_values_labeled_fn(option = 4)
       dev.off()
     }
@@ -1267,14 +1294,20 @@ SSplotBiology <-
             caption <- paste(caption, "for females")
           }
         }
-        plotinfo <- pngfun(file = file, caption = caption)
+        plotinfo <- pngfun(
+          plotinfo = plotinfo, file = file, plotdir = plotdir, pwidth = pwidth, pheight = pheight,
+          punits = punits, res = res, ptsize = ptsize, caption = caption
+        )
         weight_plot(sex = 1)
         dev.off()
         # add separate plot for males (only for empirical weight-at-age models)
         if (wtatage_switch & nsexes == 2) {
           file <- "bio5_weightatsize2.png"
           caption <- "Weight-at-age for males"
-          plotinfo <- pngfun(file = file, caption = caption)
+          plotinfo <- pngfun(
+            plotinfo = plotinfo, file = file, plotdir = plotdir, pwidth = pwidth, pheight = pheight,
+            punits = punits, res = res, ptsize = ptsize, caption = caption
+          )
           weight_plot(sex = 2)
           dev.off()
         }
@@ -1285,7 +1318,10 @@ SSplotBiology <-
         if (wtatage_switch) {
           caption <- "Spawning output at age (maturity x fecundity)"
         }
-        plotinfo <- pngfun(file = file, caption = caption)
+        plotinfo <- pngfun(
+          plotinfo = plotinfo, file = file, plotdir = plotdir, pwidth = pwidth, pheight = pheight,
+          punits = punits, res = res, ptsize = ptsize, caption = caption
+        )
         maturity_plot()
         dev.off()
       }
@@ -1293,21 +1329,30 @@ SSplotBiology <-
         if (7 %in% subplots & FecType == 1) {
           file <- "bio7_fecundity.png"
           caption <- "Fecundity"
-          plotinfo <- pngfun(file = file, caption = caption)
+          plotinfo <- pngfun(
+            plotinfo = plotinfo, file = file, plotdir = plotdir, pwidth = pwidth, pheight = pheight,
+            punits = punits, res = res, ptsize = ptsize, caption = caption
+          )
           fec_pars_fn()
           dev.off()
         }
         if (8 %in% subplots & fecundityOK) {
           file <- "bio8_fecundity_wt.png"
           caption <- "Fecundity as a function of weight"
-          plotinfo <- pngfun(file = file, caption = caption)
+          plotinfo <- pngfun(
+            plotinfo = plotinfo, file = file, plotdir = plotdir, pwidth = pwidth, pheight = pheight,
+            punits = punits, res = res, ptsize = ptsize, caption = caption
+          )
           fec_weight_fn()
           dev.off()
         }
         if (9 %in% subplots & fecundityOK) {
           file <- "bio9_fecundity_len.png"
           caption <- "Fecundity as a function of length"
-          plotinfo <- pngfun(file = file, caption = caption)
+          plotinfo <- pngfun(
+            plotinfo = plotinfo, file = file, plotdir = plotdir, pwidth = pwidth, pheight = pheight,
+            punits = punits, res = res, ptsize = ptsize, caption = caption
+          )
           fec_len_fn()
           dev.off()
         }
@@ -1319,7 +1364,10 @@ SSplotBiology <-
             "unless maturity is age-based, in which case only",
             "fecundity is represented."
           )
-          plotinfo <- pngfun(file = file, caption = caption)
+          plotinfo <- pngfun(
+            plotinfo = plotinfo, file = file, plotdir = plotdir, pwidth = pwidth, pheight = pheight,
+            punits = punits, res = res, ptsize = ptsize, caption = caption
+          )
           spawn_output_len_fn()
           dev.off()
         }
@@ -1332,7 +1380,10 @@ SSplotBiology <-
             "converted into the age dimension using the matrix",
             "of length at age."
           )
-          plotinfo <- pngfun(file = file, caption = caption)
+          plotinfo <- pngfun(
+            plotinfo = plotinfo, file = file, plotdir = plotdir, pwidth = pwidth, pheight = pheight,
+            punits = punits, res = res, ptsize = ptsize, caption = caption
+          )
           spawn_output_age_fn()
           dev.off()
         }
@@ -1398,7 +1449,10 @@ SSplotBiology <-
         if (print & 21 %in% subplots) {
           file <- "bio21_natmort.png"
           caption <- "Natural mortality"
-          plotinfo <- pngfun(file = file, caption = caption)
+          plotinfo <- pngfun(
+            plotinfo = plotinfo, file = file, plotdir = plotdir, pwidth = pwidth, pheight = pheight,
+            punits = punits, res = res, ptsize = ptsize, caption = caption
+          )
           mfunc()
           dev.off()
         }
@@ -1473,7 +1527,10 @@ SSplotBiology <-
                 if (22 %in% subplots) {
                   file <- paste0("bio22_timevarygrowthsurf_sex", i, ".png")
                   caption <- "Perspective plot of time-varying growth"
-                  plotinfo <- pngfun(file = file, caption = caption)
+                  plotinfo <- pngfun(
+                    plotinfo = plotinfo, file = file, plotdir = plotdir, pwidth = pwidth, pheight = pheight,
+                    punits = punits, res = res, ptsize = ptsize, caption = caption
+                  )
                   persp(x, y, z,
                     col = "white", xlab = labels[2], ylab = "", zlab = labels[1], expand = 0.5,
                     box = TRUE, main = ifelse(mainTitle, main, ""), cex.main = cex.main, ticktype = "detailed",
@@ -1484,7 +1541,10 @@ SSplotBiology <-
                 if (23 %in% subplots) {
                   file <- paste0("bio23_timevarygrowthcontour_sex", i, ".png")
                   caption <- "Contour plot of time-varying growth"
-                  plotinfo <- pngfun(file = file, caption = caption)
+                  plotinfo <- pngfun(
+                    plotinfo = plotinfo, file = file, plotdir = plotdir, pwidth = pwidth, pheight = pheight,
+                    punits = punits, res = res, ptsize = ptsize, caption = caption
+                  )
                   contour(x, y, z,
                     nlevels = 12, xlab = labels[2],
                     main = ifelse(mainTitle, main, ""), cex.main = cex.main, col = ians_contour, lwd = 2
@@ -1536,7 +1596,10 @@ SSplotBiology <-
                   fixed = TRUE
                 )
                 caption <- "Time-varying mortality and growth parameters"
-                plotinfo <- pngfun(file = file, caption = caption)
+                plotinfo <- pngfun(
+                  plotinfo = plotinfo, file = file, plotdir = plotdir, pwidth = pwidth, pheight = pheight,
+                  punits = punits, res = res, ptsize = ptsize, caption = caption
+                )
                 timeVaryingParmFunc(parmlabel)
                 dev.off()
               }
@@ -1569,6 +1632,8 @@ SSplotBiology <-
         if (print) {
           plotinfo <- pngfun(
             file = "bio31_hermaphrodite_transition.png",
+            plotdir = plotdir, pwidth = pwidth, pheight = pheight,
+            punits = punits, res = res, ptsize = ptsize,
             caption = labels[13]
           )
           herma_func1()
@@ -1582,6 +1647,8 @@ SSplotBiology <-
         if (print) {
           plotinfo <- pngfun(
             file = "bio32_hermaphrodite_cumulative.png",
+            plotdir = plotdir, pwidth = pwidth, pheight = pheight,
+            punits = punits, res = res, ptsize = ptsize,
             caption = labels[14]
           )
           herma_func2()
