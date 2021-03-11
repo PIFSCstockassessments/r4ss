@@ -400,7 +400,11 @@ SSunavailableSpawningOutput <-
           file <- paste0("UnavailableSpawningOutput.png")
           caption <- paste("Unavailable Spawning Output")
         }
-        plotinfo <- pngfun(file = file, caption = caption)
+        plotinfo <- pngfun(
+          plotinfo = plotinfo, file = file, plotdir = plotdir, pwidth = pwidth,
+          pheight = pheight, punits = punits, res = res, ptsize = ptsize,
+          caption = caption
+        )
         CrypticPlots()
         dev.off()
       }

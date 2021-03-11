@@ -145,7 +145,11 @@ SSplotYield <-
             if (print) {
               file <- "yield1_yield_curve.png"
               caption <- "Yield curve"
-              plotinfo <- pngfun(file = file, caption = caption)
+              plotinfo <- pngfun(
+                plotinfo = plotinfo, file = file, plotdir = plotdir, pwidth = pwidth,
+                pheight = pheight, punits = punits, res = res, ptsize = ptsize,
+                caption = caption
+              )
               yieldfunc()
               dev.off()
             }
@@ -158,7 +162,11 @@ SSplotYield <-
             if (print) {
               file <- "yield2_yield_curve_with_refpoints.png"
               caption <- "Yield curve with reference points"
-              plotinfo <- pngfun(file = file, caption = caption)
+              plotinfo <- pngfun(
+                plotinfo = plotinfo, file = file, plotdir = plotdir, pwidth = pwidth,
+                pheight = pheight, punits = punits, res = res, ptsize = ptsize,
+                caption = caption
+              )
               yieldfunc(refpoints = refpoints)
               dev.off()
             }
@@ -233,7 +241,11 @@ SSplotYield <-
             "recovering fish populations. <i>Can. J. Fish. Aquat. Sci.</i>",
             "65: 2536-2551.</blockquote>"
           )
-        plotinfo <- pngfun(file = file, caption = caption)
+        plotinfo <- pngfun(
+          plotinfo = plotinfo, file = file, plotdir = plotdir, pwidth = pwidth,
+          pheight = pheight, punits = punits, res = res, ptsize = ptsize,
+          caption = caption
+        )
         sprodfunc()
         dev.off()
       }

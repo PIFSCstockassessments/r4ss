@@ -101,10 +101,14 @@ SSplotMovementRates <-
           }
           if (plot) move.endyr.fn()
           if (print) {
-            #file <- "move1_movement_rates.png"
+            # file <- "move1_movement_rates.png"
             file <- paste0("move1_movement_rates_seas", moveseas[iseas], ".png")
             caption <- main
-            plotinfo <- pngfun(file = file, caption = caption)
+            plotinfo <- pngfun(
+              plotinfo = plotinfo, file = file, plotdir = plotdir, pwidth = pwidth,
+              pheight = pheight, punits = punits, res = res, ptsize = ptsize,
+              caption = caption
+            )
             move.endyr.fn()
             dev.off()
           }
@@ -259,7 +263,11 @@ SSplotMovementRates <-
                   Source_area, "to", Dest_area, ".png"
                 )
                 caption <- main
-                plotinfo <- pngfun(file = file, caption = caption)
+                plotinfo <- pngfun(
+                  plotinfo = plotinfo, file = file, plotdir = plotdir, pwidth = pwidth,
+                  pheight = pheight, punits = punits, res = res, ptsize = ptsize,
+                  caption = caption
+                )
                 move.mountains.fn()
                 dev.off()
               }

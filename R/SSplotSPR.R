@@ -94,7 +94,11 @@ SSplotSPR <-
       if (print) {
         file <- "SPR1_series.png"
         caption <- "Timeseries of SPR"
-        plotinfo <- pngfun(file = file, caption = caption)
+        plotinfo <- pngfun(
+          plotinfo = plotinfo, file = file, plotdir = plotdir, pwidth = pwidth,
+          pheight = pheight, punits = punits, res = res, ptsize = ptsize,
+          caption = caption
+        )
         spr_timeseries()
         dev.off()
       }
@@ -109,9 +113,9 @@ SSplotSPR <-
         minus_spr_timeseries <- function() {
           if (!add) {
             plot(0,
-                 xlim = range(sprseries[["Yr"]][good]),
-                 xlab = labels[1], ylab = labels[3], ylim = c(0, 1), type = "n"
-                 )
+              xlim = range(sprseries[["Yr"]][good]),
+              xlab = labels[1], ylab = labels[3], ylim = c(0, 1), type = "n"
+            )
           }
           lines(sprseries[["Yr"]][good], (1 - sprseries[["spr"]][good]), type = "o", col = col2)
           if (sprtarg > 0) abline(h = (1 - sprtarg), col = col4, lty = 2)
@@ -123,13 +127,17 @@ SSplotSPR <-
         if (print) {
           file <- "SPR2_minusSPRseries.png"
           caption <- "Timeseries of 1-SPR"
-          plotinfo <- pngfun(file = file, caption = caption)
+          plotinfo <- pngfun(
+            plotinfo = plotinfo, file = file, plotdir = plotdir, pwidth = pwidth,
+            pheight = pheight, punits = punits, res = res, ptsize = ptsize,
+            caption = caption
+          )
           minus_spr_timeseries()
           dev.off()
         }
       } # end check for nseasons == 1
     } # end check for subplot 2
-    
+
     # get SPR ratio and uncertainty (used in suplots 3 and 4)
     SPRratio <- derived_quants[grep(
       "^SPRratio_",
@@ -230,7 +238,11 @@ SSplotSPR <-
           "Timeseries of SPR ratio:",
           replist[["SPRratioLabel"]]
         )
-        plotinfo <- pngfun(file = file, caption = caption)
+        plotinfo <- pngfun(
+          plotinfo = plotinfo, file = file, plotdir = plotdir, pwidth = pwidth,
+          pheight = pheight, punits = punits, res = res, ptsize = ptsize,
+          caption = caption
+        )
         spr_ratio_timeseries()
         dev.off()
       }
@@ -248,12 +260,12 @@ SSplotSPR <-
 
       # find years that are shared by both sets of outputs
       shared_yrs <- intersect(Bratio[["Yr"]][Bratio[["period"]] %in% period],
-                              SPRratio[["Yr"]][SPRratio[["period"]] %in% period])
+        SPRratio[["Yr"]][SPRratio[["period"]] %in% period])
       Bratio_vals <- Bratio[["Value"]][Bratio[["Yr"]] %in% shared_yrs]
       SPRratio_vals <- SPRratio[["Value"]][SPRratio[["Yr"]] %in% shared_yrs]
-      if(length(Bratio_vals) != length(SPRratio_vals)){
+      if (length(Bratio_vals) != length(SPRratio_vals)) {
         message("Bratio and SPRratio vectors are different in length,",
-                "skipping phase plot.")
+          "skipping phase plot.")
         return()
       }
       plot(Bratio_vals,
@@ -371,7 +383,7 @@ SSplotSPR <-
           col = rgb(0, 0, 0, 0.4)
         )
       }
-      
+
       # add bigger points for first and final years
       points(Bratio_vals[1],
         SPRratio_vals[1],
@@ -402,8 +414,8 @@ SSplotSPR <-
           "intensity in that same year. "
         )
         if (Bratio_endyr_SD > 0 &
-            SPRratio_endyr_SD > 0 &
-            !is.null(B_SPR_endyr_corr)) {
+          SPRratio_endyr_SD > 0 &
+          !is.null(B_SPR_endyr_corr)) {
           caption <- paste0(
             caption,
             "Lines through the final point show 95% intervals ",
@@ -425,7 +437,11 @@ SSplotSPR <-
             "<code>SS_plots(..., btarg = -1)</code>."
           )
 
-          plotinfo <- pngfun(file = file, caption = caption)
+          plotinfo <- pngfun(
+            plotinfo = plotinfo, file = file, plotdir = plotdir, pwidth = pwidth,
+            pheight = pheight, punits = punits, res = res, ptsize = ptsize,
+            caption = caption
+          )
           make.phase.plot.MLE()
           dev.off()
         }

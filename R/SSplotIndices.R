@@ -649,7 +649,11 @@ SSplotIndices <-
               "Thicker lines (if present) indicate input uncertainty before addition of ",
               "estimated additional uncertainty parameter."
             )
-            plotinfo <- pngfun(file = file, caption = caption)
+            plotinfo <- pngfun(
+              plotinfo = plotinfo, file = file, plotdir = plotdir, pwidth = pwidth,
+              pheight = pheight, punits = punits, res = res, ptsize = ptsize,
+              caption = caption
+            )
             index.fn(addexpected = FALSE)
             dev.off()
           }
@@ -662,14 +666,22 @@ SSplotIndices <-
               "Thicker lines (if present) indicate input uncertainty before addition of ",
               "estimated additional uncertainty parameter."
             )
-            plotinfo <- pngfun(file = file, caption = caption)
+            plotinfo <- pngfun(
+              plotinfo = plotinfo, file = file, plotdir = plotdir, pwidth = pwidth,
+              pheight = pheight, punits = punits, res = res, ptsize = ptsize,
+              caption = caption
+            )
             index.fn()
             dev.off()
           }
           if (3 %in% subplots) {
             file <- paste0("index3_obs_vs_exp_", Fleet, ".png")
             caption <- paste("Observed vs. expected index values with smoother for", Fleet)
-            plotinfo <- pngfun(file = file, caption = caption)
+            plotinfo <- pngfun(
+              plotinfo = plotinfo, file = file, plotdir = plotdir, pwidth = pwidth,
+              pheight = pheight, punits = punits, res = res, ptsize = ptsize,
+              caption = caption
+            )
             obs_vs_exp.fn()
             dev.off()
           }
@@ -703,7 +715,11 @@ SSplotIndices <-
                 "Thicker lines (if present) indicate input uncertainty before addition of ",
                 "estimated additional uncertainty parameter."
               )
-              plotinfo <- pngfun(file = file, caption = caption)
+              plotinfo <- pngfun(
+                plotinfo = plotinfo, file = file, plotdir = plotdir, pwidth = pwidth,
+                pheight = pheight, punits = punits, res = res, ptsize = ptsize,
+                caption = caption
+              )
               index.fn(log = TRUE, addexpected = FALSE)
               dev.off()
             }
@@ -716,14 +732,22 @@ SSplotIndices <-
                 "Thicker lines (if present) indicate input uncertainty before addition of ",
                 "estimated additional uncertainty parameter."
               )
-              plotinfo <- pngfun(file = file, caption = caption)
+              plotinfo <- pngfun(
+                plotinfo = plotinfo, file = file, plotdir = plotdir, pwidth = pwidth,
+                pheight = pheight, punits = punits, res = res, ptsize = ptsize,
+                caption = caption
+              )
               index.fn(log = TRUE)
               dev.off()
             }
             if (6 %in% subplots) {
               file <- paste0("index6_log_obs_vs_exp_", Fleet, ".png")
               caption <- paste("log(observed) vs. log(expected) index values with smoother for", Fleet)
-              plotinfo <- pngfun(file = file, caption = caption)
+              plotinfo <- pngfun(
+                plotinfo = plotinfo, file = file, plotdir = plotdir, pwidth = pwidth,
+                pheight = pheight, punits = punits, res = res, ptsize = ptsize,
+                caption = caption
+              )
               obs_vs_exp.fn(log = TRUE)
               dev.off()
             }
@@ -744,7 +768,11 @@ SSplotIndices <-
           if (7 %in% subplots & time) {
             file <- paste0("index7_timevarying_q_", Fleet, ".png")
             caption <- paste("Timeseries of catchability for", Fleet)
-            plotinfo <- pngfun(file = file, caption = caption)
+            plotinfo <- pngfun(
+              plotinfo = plotinfo, file = file, plotdir = plotdir, pwidth = pwidth,
+              pheight = pheight, punits = punits, res = res, ptsize = ptsize,
+              caption = caption
+            )
             timevarying_q.fn()
             dev.off()
           }
@@ -756,7 +784,11 @@ SSplotIndices <-
                 "This plot should illustrate curvature of nonlinear catchability relationship<br> \n",
                 "or reveal patterns associated with random-walk catchability."
               )
-            plotinfo <- pngfun(file = file, caption = caption)
+            plotinfo <- pngfun(
+              plotinfo = plotinfo, file = file, plotdir = plotdir, pwidth = pwidth,
+              pheight = pheight, punits = punits, res = res, ptsize = ptsize,
+              caption = caption
+            )
             q_vs_vuln_bio.fn()
             dev.off()
           }
@@ -793,7 +825,11 @@ SSplotIndices <-
                 "including any estimated additional uncertainty."
               )
             }
-            plotinfo <- pngfun(file = file, caption = caption)
+            plotinfo <- pngfun(
+              plotinfo = plotinfo, file = file, plotdir = plotdir, pwidth = pwidth,
+              pheight = pheight, punits = punits, res = res, ptsize = ptsize,
+              caption = caption
+            )
             index_resids.fn(option = 1)
             dev.off()
           }
@@ -818,7 +854,11 @@ SSplotIndices <-
                 "excluding any estimated additional uncertainty."
               )
             }
-            plotinfo <- pngfun(file = file, caption = caption)
+            plotinfo <- pngfun(
+              plotinfo = plotinfo, file = file, plotdir = plotdir, pwidth = pwidth,
+              pheight = pheight, punits = punits, res = res, ptsize = ptsize,
+              caption = caption
+            )
             index_resids.fn(option = 2)
             dev.off()
           }
@@ -842,7 +882,11 @@ SSplotIndices <-
                 "and thus independent of index uncertainty."
               )
             }
-            plotinfo <- pngfun(file = file, caption = caption)
+            plotinfo <- pngfun(
+              plotinfo = plotinfo, file = file, plotdir = plotdir, pwidth = pwidth,
+              pheight = pheight, punits = punits, res = res, ptsize = ptsize,
+              caption = caption
+            )
             index_resids.fn(option = 3)
             dev.off()
           }
@@ -907,7 +951,11 @@ SSplotIndices <-
             "Indices with negative observations have been excluded."
           )
         }
-        plotinfo <- pngfun(file = file, caption = caption)
+        plotinfo <- pngfun(
+          plotinfo = plotinfo, file = file, plotdir = plotdir, pwidth = pwidth,
+          pheight = pheight, punits = punits, res = res, ptsize = ptsize,
+          caption = caption
+        )
         all_index.fn()
         dev.off()
       }

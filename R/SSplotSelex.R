@@ -393,7 +393,11 @@ SSplotSelex <-
         if (print) {
           file <- paste("sel01_multiple_fleets_length", ifactor, ".png", sep = "")
           caption <- "Selectivity at length for multiple fleets."
-          plotinfo <- pngfun(file = file, caption = caption)
+          plotinfo <- pngfun(
+            plotinfo = plotinfo, file = file, plotdir = plotdir, pwidth = pwidth,
+            pheight = pheight, punits = punits, res = res, ptsize = ptsize,
+            caption = caption
+          )
           infotable2 <- plotAllSel(factor = "Lsel")
           dev.off()
         }
@@ -409,7 +413,11 @@ SSplotSelex <-
           if (factor == "Asel2") {
             caption <- paste("Selectivity at age derived from selectivity at length for multiple fleets.")
           }
-          plotinfo <- pngfun(file = file, caption = caption)
+          plotinfo <- pngfun(
+            plotinfo = plotinfo, file = file, plotdir = plotdir, pwidth = pwidth,
+            pheight = pheight, punits = punits, res = res, ptsize = ptsize,
+            caption = caption
+          )
           infotable2 <- plotAllSel(factor = factor)
           dev.off()
         }
@@ -461,14 +469,22 @@ SSplotSelex <-
               if (3 %in% subplot) {
                 file <- paste("sel03_len_timevary_surf_flt", i, "sex", m, ".png", sep = "")
                 caption <- paste("Surface plot of", main)
-                plotinfo <- pngfun(file = file, caption = caption)
+                plotinfo <- pngfun(
+                  plotinfo = plotinfo, file = file, plotdir = plotdir, pwidth = pwidth,
+                  pheight = pheight, punits = punits, res = res, ptsize = ptsize,
+                  caption = caption
+                )
                 persp(x, y, z, col = "white", xlab = labels[1], ylab = labels[3], zlab = labels[4], expand = 0.5, box = TRUE, main = main, cex.main = cex.main, ticktype = "detailed", phi = 35, theta = -10)
                 dev.off()
               }
               if (4 %in% subplot) {
                 file <- paste("sel04_len_timevary_contour_flt", i, "sex", m, ".png", sep = "")
                 caption <- paste("Countour plot of", main)
-                plotinfo <- pngfun(file = file, caption = caption)
+                plotinfo <- pngfun(
+                  plotinfo = plotinfo, file = file, plotdir = plotdir, pwidth = pwidth,
+                  pheight = pheight, punits = punits, res = res, ptsize = ptsize,
+                  caption = caption
+                )
                 contour(x, y, z, nlevels = 5, xlab = labels[1], ylab = labels[3], main = main, cex.main = cex.main, col = ians_blues, lwd = lwd)
                 dev.off()
               }
@@ -494,14 +510,22 @@ SSplotSelex <-
               if (5 %in% subplot) {
                 file <- paste("sel05_timevary_ret_surf_flt", i, "sex", m, ".png", sep = "")
                 caption <- paste("Surface plot of", main)
-                plotinfo <- pngfun(file = file, caption = caption)
+                plotinfo <- pngfun(
+                  plotinfo = plotinfo, file = file, plotdir = plotdir, pwidth = pwidth,
+                  pheight = pheight, punits = punits, res = res, ptsize = ptsize,
+                  caption = caption
+                )
                 persp(x, y, z, col = "white", xlab = labels[1], ylab = labels[3], zlab = labels[5], expand = 0.5, box = TRUE, main = main, cex.main = cex.main, ticktype = "detailed", phi = 35, theta = -10)
                 dev.off()
               }
               if (6 %in% subplot) {
                 file <- paste("sel06_timevary_ret_contour_flt", i, "sex", m, ".png", sep = "")
                 caption <- paste("Countour plot of", main)
-                plotinfo <- pngfun(file = file, caption = caption)
+                plotinfo <- pngfun(
+                  plotinfo = plotinfo, file = file, plotdir = plotdir, pwidth = pwidth,
+                  pheight = pheight, punits = punits, res = res, ptsize = ptsize,
+                  caption = caption
+                )
                 contour(x, y, z, nlevels = 5, xlab = labels[1], ylab = labels[3], main = main, cex.main = cex.main, col = ians_blues, lwd = lwd)
                 dev.off()
               }
@@ -538,14 +562,22 @@ SSplotSelex <-
               if (7 %in% subplot) {
                 file <- paste("sel07_timevary_mort_surf_flt", i, "sex", m, ".png", sep = "")
                 caption <- paste("Surface plot of", main)
-                plotinfo <- pngfun(file = file, caption = caption)
+                plotinfo <- pngfun(
+                  plotinfo = plotinfo, file = file, plotdir = plotdir, pwidth = pwidth,
+                  pheight = pheight, punits = punits, res = res, ptsize = ptsize,
+                  caption = caption
+                )
                 persp(x, y, z, col = "white", xlab = labels[1], ylab = labels[3], zlab = labels[6], expand = 0.5, box = TRUE, main = main, cex.main = cex.main, ticktype = "detailed", phi = 35, theta = -10)
                 dev.off()
               }
               if (8 %in% subplot) {
                 file <- paste("sel08_timevary_mort_contour_flt", i, "sex", m, ".png", sep = "")
                 caption <- paste("Surface plot of", main)
-                plotinfo <- pngfun(file = file, caption = caption)
+                plotinfo <- pngfun(
+                  plotinfo = plotinfo, file = file, plotdir = plotdir, pwidth = pwidth,
+                  pheight = pheight, punits = punits, res = res, ptsize = ptsize,
+                  caption = caption
+                )
                 contour(x, y, z, nlevels = 5, xlab = labels[1], ylab = labels[3], main = main, cex.main = cex.main, col = ians_blues, lwd = lwd)
                 dev.off()
               }
@@ -630,7 +662,11 @@ SSplotSelex <-
               if (print) {
                 file <- paste("sel09_len_flt", i, "sex", m, ".png", sep = "")
                 caption <- main
-                plotinfo <- pngfun(file = file, caption = caption)
+                plotinfo <- pngfun(
+                  plotinfo = plotinfo, file = file, plotdir = plotdir, pwidth = pwidth,
+                  pheight = pheight, punits = punits, res = res, ptsize = ptsize,
+                  caption = caption
+                )
                 selfunc()
                 dev.off()
               }
@@ -685,14 +721,22 @@ SSplotSelex <-
                   if (11 %in% subplot) {
                     file <- paste("sel11_timevary_surf_flt", i, "sex", m, ".png", sep = "")
                     caption <- main
-                    plotinfo <- pngfun(file = file, caption = caption)
+                    plotinfo <- pngfun(
+                      plotinfo = plotinfo, file = file, plotdir = plotdir, pwidth = pwidth,
+                      pheight = pheight, punits = punits, res = res, ptsize = ptsize,
+                      caption = caption
+                    )
                     persp(x, y, z, col = "white", xlab = labels[2], ylab = labels[3], zlab = ylab, expand = 0.5, box = TRUE, main = main, cex.main = cex.main, ticktype = "detailed", phi = 35, theta = -10)
                     dev.off()
                   }
                   if (12 %in% subplot) {
                     file <- paste("sel12_timevary_contour_flt", i, "sex", m, ".png", sep = "")
                     caption <- main
-                    plotinfo <- pngfun(file = file, caption = caption)
+                    plotinfo <- pngfun(
+                      plotinfo = plotinfo, file = file, plotdir = plotdir, pwidth = pwidth,
+                      pheight = pheight, punits = punits, res = res, ptsize = ptsize,
+                      caption = caption
+                    )
                     contour(x, y, z, nlevels = 5, xlab = labels[2], main = main, cex.main = cex.main, col = ians_blues, lwd = lwd)
                     dev.off()
                   }
@@ -717,7 +761,11 @@ SSplotSelex <-
                   if (print) {
                     file <- paste("sel13_age_flt", i, "sex", m, ".png", sep = "")
                     caption <- main
-                    plotinfo <- pngfun(file = file, caption = caption)
+                    plotinfo <- pngfun(
+                      plotinfo = plotinfo, file = file, plotdir = plotdir, pwidth = pwidth,
+                      pheight = pheight, punits = punits, res = res, ptsize = ptsize,
+                      caption = caption
+                    )
                     endselfunc()
                     dev.off()
                   }
@@ -751,7 +799,11 @@ SSplotSelex <-
                   if (print) {
                     file <- paste("sel14_age_flt", i, "sex", m, ".png", sep = "")
                     caption <- main
-                    plotinfo <- pngfun(file = file, caption = caption)
+                    plotinfo <- pngfun(
+                      plotinfo = plotinfo, file = file, plotdir = plotdir, pwidth = pwidth,
+                      pheight = pheight, punits = punits, res = res, ptsize = ptsize,
+                      caption = caption
+                    )
                     endselfunc2()
                     dev.off()
                   }
@@ -811,7 +863,11 @@ SSplotSelex <-
             "is a list with an element for each combination of fleet and length or ",
             "age which uses the semi-parametric selectivity."
           )
-          plotinfo <- pngfun(file = file, caption = caption)
+          plotinfo <- pngfun(
+            plotinfo = plotinfo, file = file, plotdir = plotdir, pwidth = pwidth,
+            pheight = pheight, punits = punits, res = res, ptsize = ptsize,
+            caption = caption
+          )
           seldev_func(m = seldev_matrix[[imatrix]])
           dev.off()
         }
@@ -912,7 +968,11 @@ SSplotSelex <-
               if (21 %in% subplot) {
                 file <- paste("sel21_agelen_contour_flt", i, "sex", m, ".png", sep = "")
                 caption <- main
-                plotinfo <- pngfun(file = file, caption = caption)
+                plotinfo <- pngfun(
+                  plotinfo = plotinfo, file = file, plotdir = plotdir, pwidth = pwidth,
+                  pheight = pheight, punits = punits, res = res, ptsize = ptsize,
+                  caption = caption
+                )
                 agelenselcontour()
                 dev.off()
               }
@@ -979,7 +1039,11 @@ SSplotSelex <-
           if (print) {
             file <- paste("sel22_uncertainty", "sex", m, ".png", sep = "")
             caption <- main
-            plotinfo <- pngfun(file = file, caption = caption)
+            plotinfo <- pngfun(
+              plotinfo = plotinfo, file = file, plotdir = plotdir, pwidth = pwidth,
+              pheight = pheight, punits = punits, res = res, ptsize = ptsize,
+              caption = caption
+            )
             plot_extra_selex_SD()
             dev.off()
           }

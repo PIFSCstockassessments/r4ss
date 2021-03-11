@@ -611,7 +611,11 @@ SSplotPars <-
         # define filename
         file <- paste0("parameter_distributions", pagetext, ".png", sep = "")
         # start png file and add to plotinfo
-        plotinfo <- pngfun(file = file, caption = caption)
+        plotinfo <- pngfun(
+          plotinfo = plotinfo, file = file, plotdir = plotdir, pwidth = pwidth,
+          pheight = pheight, punits = punits, res = res, ptsize = ptsize,
+          caption = caption
+        )
 
         # change margins and number of panels
         par(mfcol = c(nrows, ncols), mar = c(2, 1, 2, 1), oma = c(2, 2, 0, 0))
