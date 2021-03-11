@@ -247,7 +247,11 @@ SSplotCohortCatch <-
           file <- paste("catch_cohort_biomass.png", sep = "")
           caption <- labels[3]
         }
-        plotinfo <- pngfun(file = file, caption = caption)
+        plotinfo <- pngfun(
+          plotinfo = plotinfo, file = file, plotdir = plotdir, pwidth = pwidth,
+          pheight = pheight, punits = punits, res = res, ptsize = ptsize,
+          caption = caption
+        )
         plotfun(isubplot)
         dev.off()
       }

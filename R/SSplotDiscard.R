@@ -196,7 +196,11 @@ SSplotDiscard <-
               file <- paste0("discard_fit", FleetName, ".png")
             }
             caption <- title
-            plotinfo <- pngfun(file = file, caption = caption)
+            plotinfo <- pngfun(
+              plotinfo = plotinfo, file = file, plotdir = plotdir, pwidth = pwidth,
+              pheight = pheight, punits = punits, res = res, ptsize = ptsize,
+              caption = caption
+            )
             dfracfunc(addfit = addfit)
             dev.off()
           }

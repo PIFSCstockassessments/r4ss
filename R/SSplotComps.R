@@ -455,12 +455,12 @@ SSplotComps <-
         # get table of info about the comp data of this kind/fleet
         if (kind %in% c("AGE", "GSTAGE", "cond", "GSTcond")) {
           data_info <- replist[["age_data_info"]]
-        } 
+        }
         if (kind %in% c("LEN", "GSTLEN")) {
           data_info <- replist[["len_data_info"]]
         }
-          
-        
+
+
         # loop over partitions (discard, retain, total)
         for (j in unique(dbasef[["Part"]])) {
           dbase <- dbasef[dbasef[["Part"]] == j, ]
@@ -625,13 +625,13 @@ SSplotComps <-
                 if (ipage == 1) {
                   if ("DM_effN" %in% names(dbase) && any(!is.na(dbase[["DM_effN"]]))) {
                     # get Theta value for this fleet
-                    if(kind %in% "LEN"){
+                    if (kind %in% "LEN") {
                       ipar <- data_info[["ParmSelect"]][f]
                     } else { # "AGE" or "cond"
                       ipar <- data_info[["ParmSelect"]][f]
                     }
                     # D-M option 1 (linear)
-                    if(data_info[["CompError"]][f] == 1) {
+                    if (data_info[["CompError"]][f] == 1) {
                       Theta <- as.numeric(replist[["Dirichlet_Multinomial_pars"]][["Theta"]][ipar])
                       # note: in caption below &#920 = Theta
                       caption_extra <-
@@ -646,7 +646,7 @@ SSplotComps <-
                         )
                     }
                     # D-M option 2 (saturating)
-                    if(data_info[["CompError"]][f] == 2) {
+                    if (data_info[["CompError"]][f] == 2) {
                       beta <- as.numeric(replist[["Dirichlet_Multinomial_pars"]][["Theta"]][ipar])
                       # note: in captions below &#946 = beta
                       caption_extra <-
@@ -661,20 +661,20 @@ SSplotComps <-
                         )
                     }
                     caption_extra <- paste0(caption_extra,
-                                            "<br><br>For more info, see<br>",
-                                            "<blockquote>",
-                                            "Thorson, J.T., Johnson, K.F., ",
-                                            "Methot, R.D. and Taylor, I.G. 2017. ",
-                                            "Model-based estimates of effective sample size ",
-                                            "in stock assessment models using the ",
-                                            "Dirichlet-multinomial distribution. ",
-                                            "<i>Fisheries Research</i>",
-                                            "192: 84-93. ",
-                                            "<a href=https://doi.org/10.1016/j.fishres.2016.06.005>",
-                                            "https://doi.org/10.1016/j.fishres.2016.06.005</a>",
-                                            "</blockquote>"
-                                            )
-                    
+                      "<br><br>For more info, see<br>",
+                      "<blockquote>",
+                      "Thorson, J.T., Johnson, K.F., ",
+                      "Methot, R.D. and Taylor, I.G. 2017. ",
+                      "Model-based estimates of effective sample size ",
+                      "in stock assessment models using the ",
+                      "Dirichlet-multinomial distribution. ",
+                      "<i>Fisheries Research</i>",
+                      "192: 84-93. ",
+                      "<a href=https://doi.org/10.1016/j.fishres.2016.06.005>",
+                      "https://doi.org/10.1016/j.fishres.2016.06.005</a>",
+                      "</blockquote>"
+                    )
+
                   } else { # if not using Dirichlet-Multinomial likelihood
                     caption_extra <-
                       paste0(
@@ -821,7 +821,11 @@ SSplotComps <-
                 filename_fltsexmkt, pagetext, ".png",
                 sep = ""
               )
-              plotinfo <- pngfun(file = file, caption = caption)
+              plotinfo <- pngfun(
+                plotinfo = plotinfo, file = file, plotdir = plotdir, pwidth = pwidth,
+                pheight = pheight, punits = punits, res = res, ptsize = ptsize,
+                caption = caption
+              )
               tempfun2()
               dev.off() # close device if png
             }
@@ -894,7 +898,11 @@ SSplotComps <-
                   filename_fltsexmkt, pagetext, ".png",
                   sep = ""
                 )
-                plotinfo <- pngfun(file = file, caption = caption)
+                plotinfo <- pngfun(
+                  plotinfo = plotinfo, file = file, plotdir = plotdir, pwidth = pwidth,
+                  pheight = pheight, punits = punits, res = res, ptsize = ptsize,
+                  caption = caption
+                )
                 tempfun3(ipage = ipage, ...)
                 dev.off() # close device if png
               }
@@ -959,7 +967,11 @@ SSplotComps <-
                         filenamestart, filename_fltsexmkt,
                         "_", aalyr, pagetext, ".png"
                       )
-                      plotinfo <- pngfun(file = file, caption = caption)
+                      plotinfo <- pngfun(
+                        plotinfo = plotinfo, file = file, plotdir = plotdir, pwidth = pwidth,
+                        pheight = pheight, punits = punits, res = res, ptsize = ptsize,
+                        caption = caption
+                      )
                       tempfun4(ipage = ipage, ...)
                       dev.off() # close device if print
                     }
@@ -1010,7 +1022,11 @@ SSplotComps <-
                       filenamestart, "yearresids_",
                       filename_fltsexmkt, "_", aalyr, pagetext, ".png"
                     )
-                    plotinfo <- pngfun(file = file, caption = caption)
+                    plotinfo <- pngfun(
+                      plotinfo = plotinfo, file = file, plotdir = plotdir, pwidth = pwidth,
+                      pheight = pheight, punits = punits, res = res, ptsize = ptsize,
+                      caption = caption
+                    )
                     tempfun5()
                     dev.off() # close device if print
                   }
@@ -1068,7 +1084,11 @@ SSplotComps <-
                         filenamestart, filename_fltsexmkt,
                         "_length", ilenbin, labels[7], pagetext, ".png"
                       )
-                      plotinfo <- pngfun(file = file, caption = caption)
+                      plotinfo <- pngfun(
+                        plotinfo = plotinfo, file = file, plotdir = plotdir, pwidth = pwidth,
+                        pheight = pheight, punits = punits, res = res, ptsize = ptsize,
+                        caption = caption
+                      )
                       tempfun6(ipage = ipage, ...)
                       dev.off() # close device if print
                     }
@@ -1151,7 +1171,11 @@ SSplotComps <-
                 filename_fltsexmkt, ".png",
                 sep = ""
               )
-              plotinfo <- pngfun(file = file, caption = caption)
+              plotinfo <- pngfun(
+                plotinfo = plotinfo, file = file, plotdir = plotdir, pwidth = pwidth,
+                pheight = pheight, punits = punits, res = res, ptsize = ptsize,
+                caption = caption
+              )
               lfitfunc()
               dev.off()
             }
@@ -1236,8 +1260,8 @@ SSplotComps <-
 
               # add caption to the plotinfo table (normally done by pngfun)
               plotinfo <- rbind(plotinfo, data.frame(file = file,
-                                                     caption = caption,
-                                                     alt_text = NA))
+                caption = caption,
+                alt_text = NA))
 
               dev.off() # close device if png
             } # end test for print to PNG option
@@ -1304,8 +1328,8 @@ SSplotComps <-
               } # end test for datonly
               # add caption to the plotinfo table (normally done by pngfun)
               plotinfo <- rbind(plotinfo, data.frame(file = file,
-                                                     caption = caption,
-                                                     alt_text = NA))
+                caption = caption,
+                alt_text = NA))
               dev.off() # close device if png
             } # end test for print to PNG option
           }
@@ -1434,7 +1458,11 @@ SSplotComps <-
                   filename_fltsexmkt, pagetext, ".png",
                   sep = ""
                 )
-                plotinfo <- pngfun(file = file, caption = caption)
+                plotinfo <- pngfun(
+                  plotinfo = plotinfo, file = file, plotdir = plotdir, pwidth = pwidth,
+                  pheight = pheight, punits = punits, res = res, ptsize = ptsize,
+                  caption = caption
+                )
                 andrefun(ipage = ipage)
                 dev.off() # close device if png
               } # end loop over pages
@@ -1612,7 +1640,11 @@ SSplotComps <-
                       pagetext, "_aggregated_across_time.png",
                       sep = ""
                     )
-                    plotinfo <- pngfun(file = file, caption = caption)
+                    plotinfo <- pngfun(
+                      plotinfo = plotinfo, file = file, plotdir = plotdir, pwidth = pwidth,
+                      pheight = pheight, punits = punits, res = res, ptsize = ptsize,
+                      caption = caption
+                    )
                     tempfun7(ipage = ipage, ...)
                     dev.off()
                   }
@@ -1796,7 +1828,11 @@ SSplotComps <-
                       sep = ""
                     )
 
-                    plotinfo <- pngfun(file = file, caption = caption)
+                    plotinfo <- pngfun(
+                      plotinfo = plotinfo, file = file, plotdir = plotdir, pwidth = pwidth,
+                      pheight = pheight, punits = punits, res = res, ptsize = ptsize,
+                      caption = caption
+                    )
                     tempfun8(ipage = ipage, ...)
                     dev.off()
                   }
@@ -1954,7 +1990,11 @@ SSplotComps <-
                       "_aggregated_across_seasons_within_year.png",
                       sep = ""
                     )
-                    pngfun(file = file, caption = caption)
+                    plotinfo <- pngfun(
+                      plotinfo = plotinfo, file = file, plotdir = plotdir, pwidth = pwidth,
+                      pheight = pheight, punits = punits, res = res, ptsize = ptsize,
+                      caption = caption
+                    )
                     tempfun9(ipage = ipage, ...)
                     dev.off()
                   }
@@ -2217,7 +2257,11 @@ SSplotComps <-
                 "_multi-fleet_comparison.png",
                 sep = ""
               )
-              plotinfo <- pngfun(file = file, caption = caption)
+              plotinfo <- pngfun(
+                plotinfo = plotinfo, file = file, plotdir = plotdir, pwidth = pwidth,
+                pheight = pheight, punits = punits, res = res, ptsize = ptsize,
+                caption = caption
+              )
               multifleet.bubble.fun(ipage = ipage)
               dev.off()
             } # end loop over pages within printing PNG

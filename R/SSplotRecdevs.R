@@ -178,7 +178,11 @@ SSplotRecdevs <-
           if (1 %in% subplots) {
             file <- "recdevs1_points.png"
             caption <- "Recruitment deviations"
-            plotinfo <- pngfun(file = file, caption = caption)
+            plotinfo <- pngfun(
+              plotinfo = plotinfo, file = file, plotdir = plotdir, pwidth = pwidth,
+              pheight = pheight, punits = punits, res = res, ptsize = ptsize,
+              caption = caption
+            )
             recdevfunc(uncertainty = FALSE)
             dev.off()
           }
@@ -186,7 +190,11 @@ SSplotRecdevs <-
             if (2 %in% subplots) {
               file <- "recdevs2_withbars.png"
               caption <- "Recruitment deviations with 95% intervals"
-              plotinfo <- pngfun(file = file, caption = caption)
+              plotinfo <- pngfun(
+                plotinfo = plotinfo, file = file, plotdir = plotdir, pwidth = pwidth,
+                pheight = pheight, punits = punits, res = res, ptsize = ptsize,
+                caption = caption
+              )
               recdevfunc(uncertainty = TRUE)
               dev.off()
             }
@@ -198,7 +206,11 @@ SSplotRecdevs <-
                   "See later figure of transformed variance values for comparison",
                   "with bias adjustment settings in the model."
                 )
-              plotinfo <- pngfun(file = file, caption = caption)
+              plotinfo <- pngfun(
+                plotinfo = plotinfo, file = file, plotdir = plotdir, pwidth = pwidth,
+                pheight = pheight, punits = punits, res = res, ptsize = ptsize,
+                caption = caption
+              )
               recdevfunc3()
               dev.off()
             }

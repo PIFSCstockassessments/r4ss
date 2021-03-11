@@ -127,7 +127,11 @@ SSplotMnwt <-
                 file <- paste0("bodywt_fit_flt", FleetName, ".png")
               }
               caption <- ptitle
-              plotinfo <- pngfun(file = file, caption = caption)
+              plotinfo <- pngfun(
+                plotinfo = plotinfo, file = file, plotdir = plotdir, pwidth = pwidth,
+                pheight = pheight, punits = punits, res = res, ptsize = ptsize,
+                caption = caption
+              )
               bdywtfunc(addfit = addfit)
               dev.off()
             }

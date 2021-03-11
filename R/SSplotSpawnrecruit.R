@@ -362,7 +362,11 @@ SSplotSpawnrecruit <-
       if (1 %in% subplot) {
         file <- "SR_curve.png"
         caption <- paste("Stock-recruit curve.", color.caption)
-        plotinfo <- pngfun(file = file, caption = caption)
+        plotinfo <- pngfun(
+          plotinfo = plotinfo, file = file, plotdir = plotdir, pwidth = pwidth,
+          pheight = pheight, punits = punits, res = res, ptsize = ptsize,
+          caption = caption
+        )
         StockRecruitCurve.fn()
         dev.off()
       }
@@ -373,7 +377,11 @@ SSplotSpawnrecruit <-
           "years with (log) deviations > ", textmindev, ".",
           color.caption
         )
-        plotinfo <- pngfun(file = file, caption = caption)
+        plotinfo <- pngfun(
+          plotinfo = plotinfo, file = file, plotdir = plotdir, pwidth = pwidth,
+          pheight = pheight, punits = punits, res = res, ptsize = ptsize,
+          caption = caption
+        )
         StockRecruitCurve.fn(text = TRUE)
         dev.off()
       }
@@ -385,7 +393,11 @@ SSplotSpawnrecruit <-
           "years with (log) deviations > ", textmindev, ".",
           color.caption
         )
-        plotinfo <- pngfun(file = file, caption = caption)
+        plotinfo <- pngfun(
+          plotinfo = plotinfo, file = file, plotdir = plotdir, pwidth = pwidth,
+          pheight = pheight, punits = punits, res = res, ptsize = ptsize,
+          caption = caption
+        )
         stock_vs_devs.fn(text = TRUE)
         dev.off()
       }

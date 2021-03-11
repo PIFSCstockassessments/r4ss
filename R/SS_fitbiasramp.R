@@ -349,7 +349,11 @@ SS_fitbiasramp <-
       caption <- paste0(caption, df[["value"]][5], "  ", df[["label"]][5])
       caption <- paste(caption, "</pre>")
 
-      plotinfo <- pngfun(file = file, caption = caption)
+      plotinfo <- pngfun(
+        plotinfo = plotinfo, file = file, plotdir = plotdir, pwidth = pwidth,
+        pheight = pheight, punits = punits, res = res, ptsize = ptsize,
+        caption = caption
+      )
       plotbiasadj()
       utils::capture.output(newbias,
         file = file.path(plotdir, "recruit_fit_bias_adjust_convergence.txt")
