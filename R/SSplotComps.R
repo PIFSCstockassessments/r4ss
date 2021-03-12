@@ -689,9 +689,11 @@ SSplotComps <-
                   filename_fltsexmkt, pagetext, ".png",
                   sep = ""
                 )
+                caption <- paste0(caption, caption_count, caption_extra)
                 plotinfo <- pngfun(
-                  file = file,
-                  caption = paste0(caption, caption_count, caption_extra)
+                  plotinfo = plotinfo, file = file, plotdir = plotdir, pwidth = pwidth,
+                  pheight = pheight, punits = punits, res = res, ptsize = ptsize,
+                  caption = caption
                 )
                 tempfun(ipage = ipage, ...)
                 dev.off()
@@ -1281,7 +1283,6 @@ SSplotComps <-
               )
               # not using pngfun because caption isn't available until after
               # plot is created
-              # old command: plotinfo <- pngfun(file=file, caption=caption)
               png(
                 filename = file.path(plotdir, file), width = pwidth, height = pheight,
                 units = punits, res = res, pointsize = ptsize

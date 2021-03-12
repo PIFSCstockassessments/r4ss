@@ -259,7 +259,7 @@ SSplotTimeseries <-
         if (subplot == 11) {
           # sum total recruitment across birth seasons
           for (y in ts[["Yr"]]) {
-            yvals[ts[["Yr"]] == y & ts[["Seas"]] == 1 & ts[["Area"]] ==1] <- sum(yvals[ts[["Yr"]] == y], na.rm = TRUE)
+            yvals[ts[["Yr"]] == y & ts[["Seas"]] == 1 & ts[["Area"]] == 1] <- sum(yvals[ts[["Yr"]] == y], na.rm = TRUE)
             yvals[ts[["Yr"]] == y & (ts[["Seas"]] > 1 | ts[["Area"]] > 1)] <- 0
           }
         }
@@ -406,21 +406,30 @@ SSplotTimeseries <-
 
       if (print) { # if printing to a file
         # adjust file names
-        filename <- main
+        caption <- main
+        file <- main
         if (subplot %in% 9:10 & grepl(":", main)) {
-          # remove extra stuff like "B/B_0" from filename
-          filename <- strsplit(main, split=":")[[1]][1]
+          # remove extra stuff like "B/B_0" from file
+          file <- strsplit(main, split = ":")[[1]][1]
         }
-        filename <- gsub(",", "", filename, fixed = TRUE)
-        filename <- gsub("~", "", filename, fixed = TRUE)
-        filename <- gsub("%", "", filename, fixed = TRUE)
-        if (forecastplot) filename <- paste(filename, "forecast")
-        if (uncertainty & subplot %in% c(5, 7, 9)) filename <- paste(filename, "intervals")
-        filename <- paste("ts", subplot, "_", filename, ".png", sep = "")
+        file <- gsub(",", "", file, fixed = TRUE)
+        file <- gsub("~", "", file, fixed = TRUE)
+        file <- gsub("%", "", file, fixed = TRUE)
+        if (forecastplot) {
+          file <- paste(file, "forecast")
+        }
+        if (uncertainty & subplot %in% c(5, 7, 9)) {
+          file <- paste(file, "intervals")
+        }
+        file <- paste("ts", subplot, "_", file, ".png", sep = "")
         # replace any spaces with underscores
-        filename <- gsub(pattern = " ", replacement = "_", x = filename, fixed = TRUE)
-        # if(verbose) cat("printing plot to file:",filename,"\n")
-        plotinfo <- pngfun(file = filename, caption = main)
+        file <- gsub(pattern = " ", replacement = "_", x = file, fixed = TRUE)
+        # if(verbose) cat("printing plot to file:", file, "\n")
+        plotinfo <- pngfun(
+          plotinfo = plotinfo, file = file, plotdir = plotdir, pwidth = pwidth,
+          pheight = pheight, punits = punits, res = res, ptsize = ptsize,
+          caption = caption
+        )
       }
 
       # move VIRG value from startyr-2 to startyr-1 to show closer to plot
@@ -446,22 +455,22 @@ SSplotTimeseries <-
         if (btarg < 1) {
           abline(h = btarg, col = "red")
           text(max(startyr, minyr) + 4, btarg + 0.02 * diff(par()$usr[3:4]),
-               labels[10],
-               adj = 0
-               )
+            labels[10],
+            adj = 0
+          )
         }
         if (minbthresh < 1) {
           abline(h = minbthresh, col = "red")
           text(max(startyr, minyr) + 4, minbthresh + 0.02 * diff(par()$usr[3:4]),
-               labels[11],
-               adj = 0
-               )
+            labels[11],
+            adj = 0
+          )
         }
       }
       if (subplot %in% 9:10) {
         abline(h = 1.0, col = "red")
       }
-      
+
       if (subplot %in% 14:15) {
         # these plots show lines for each birth season,
         # but probably won't work if there are multiple birth seasons and multiple areas
@@ -506,7 +515,7 @@ SSplotTimeseries <-
           }
           mycol <- areacols[iarea]
           mytype <- "o" # overplotting points on lines for most time series
-          if (subplot == 11 & uncertainty){
+          if (subplot == 11 & uncertainty) {
             mytype <- "p" # just points without connecting lines if plotting recruitment with confidence intervals
           }
           if (!uncertainty) {
