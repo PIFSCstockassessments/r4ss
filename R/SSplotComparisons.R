@@ -2185,7 +2185,7 @@ SSplotComparisons <-
         ymax_vec[1] <- plotSpawnBio(show_uncertainty = FALSE)
       }
       if (print) {
-        pngfun_comparisons("compare1_spawnbio.png", filenameprefix = filenameprefix, par = par)
+        pngfun_comparisons("compare1_spawnbio.png")
         ymax_vec[1] <- plotSpawnBio(show_uncertainty = FALSE)
         dev.off()
       }
@@ -2201,7 +2201,7 @@ SSplotComparisons <-
           ymax_vec[2] <- plotSpawnBio(show_uncertainty = TRUE)
         }
         if (print) {
-          pngfun_comparisons("compare2_spawnbio_uncertainty.png", filenameprefix = filenameprefix, par = par)
+          pngfun_comparisons("compare2_spawnbio_uncertainty.png")
           ymax_vec[2] <- plotSpawnBio(show_uncertainty = TRUE)
           dev.off()
         }
@@ -2218,7 +2218,7 @@ SSplotComparisons <-
         ymax_vec[3] <- plotBratio(show_uncertainty = FALSE)
       }
       if (print) {
-        pngfun_comparisons("compare3_Bratio.png", filenameprefix = filenameprefix, par = par)
+        pngfun_comparisons("compare3_Bratio.png")
         ymax_vec[3] <- plotBratio(show_uncertainty = FALSE)
         dev.off()
       }
@@ -2234,7 +2234,7 @@ SSplotComparisons <-
           ymax_vec[4] <- plotBratio(show_uncertainty = TRUE)
         }
         if (print) {
-          pngfun_comparisons("compare4_Bratio_uncertainty.png", filenameprefix = filenameprefix, par = par)
+          pngfun_comparisons("compare4_Bratio_uncertainty.png")
           ymax_vec[4] <- plotBratio(show_uncertainty = TRUE)
           dev.off()
         }
@@ -2250,7 +2250,7 @@ SSplotComparisons <-
         ymax_vec[5] <- plotSPRratio(show_uncertainty = FALSE)
       }
       if (print) {
-        pngfun_comparisons("compare5_SPRratio.png", filenameprefix = filenameprefix, par = par)
+        pngfun_comparisons("compare5_SPRratio.png")
         ymax_vec[5] <- plotSPRratio(show_uncertainty = FALSE)
         dev.off()
       }
@@ -2266,7 +2266,7 @@ SSplotComparisons <-
           ymax_vec[6] <- plotSPRratio(show_uncertainty = TRUE)
         }
         if (print) {
-          pngfun_comparisons("compare6_SPRratio_uncertainty.png", filenameprefix = filenameprefix, par = par)
+          pngfun_comparisons("compare6_SPRratio_uncertainty.png")
           ymax_vec[6] <- plotSPRratio(show_uncertainty = TRUE)
           dev.off()
         }
@@ -2282,7 +2282,7 @@ SSplotComparisons <-
         ymax_vec[7] <- plotF(show_uncertainty = FALSE)
       }
       if (print) {
-        pngfun_comparisons("compare7_Fvalue.png", filenameprefix = filenameprefix, par = par)
+        pngfun_comparisons("compare7_Fvalue.png")
         ymax_vec[7] <- plotF(show_uncertainty = FALSE)
         dev.off()
       }
@@ -2299,7 +2299,7 @@ SSplotComparisons <-
           ymax_vec[8] <- plotF(show_uncertainty = TRUE)
         }
         if (print) {
-          pngfun_comparisons("compare8_Fvalue_uncertainty.png", filenameprefix = filenameprefix, par = par)
+          pngfun_comparisons("compare8_Fvalue_uncertainty.png")
           ymax_vec[8] <- plotF(show_uncertainty = TRUE)
           dev.off()
         }
@@ -2315,7 +2315,7 @@ SSplotComparisons <-
         ymax_vec[9] <- plotRecruits(show_uncertainty = FALSE)
       }
       if (print) {
-        pngfun_comparisons("compare9_recruits.png", filenameprefix = filenameprefix, par = par)
+        pngfun_comparisons("compare9_recruits.png")
         ymax_vec[9] <- plotRecruits(show_uncertainty = FALSE)
         dev.off()
       }
@@ -2331,7 +2331,7 @@ SSplotComparisons <-
           ymax_vec[10] <- plotRecruits()
         }
         if (print) {
-          pngfun_comparisons("compare10_recruits_uncertainty.png", filenameprefix = filenameprefix, par = par)
+          pngfun_comparisons("compare10_recruits_uncertainty.png")
           ymax_vec[10] <- plotRecruits()
           dev.off()
         }
@@ -2348,7 +2348,7 @@ SSplotComparisons <-
           ymax_vec[11] <- plotRecDevs(show_uncertainty = FALSE)
         }
         if (print) {
-          pngfun_comparisons("compare11_recdevs.png", filenameprefix = filenameprefix, par = par)
+          pngfun_comparisons("compare11_recdevs.png")
           ymax_vec[11] <- plotRecDevs(show_uncertainty = FALSE)
           dev.off()
         }
@@ -2365,7 +2365,7 @@ SSplotComparisons <-
           ymax_vec[12] <- plotRecDevs()
         }
         if (print) {
-          pngfun_comparisons("compare12_recdevs_uncertainty.png", filenameprefix = filenameprefix, par = par)
+          pngfun_comparisons("compare12_recdevs_uncertainty.png")
           ymax_vec[12] <- plotRecDevs()
           dev.off()
         }
@@ -2425,7 +2425,7 @@ SSplotComparisons <-
         ymax_vec[15] <- plotPhase()
       }
       if (print) {
-        pngfun_comparisons("compare15_phase_plot.png", filenameprefix = filenameprefix, par = par)
+        pngfun_comparisons("compare15_phase_plot.png")
         ymax_vec[15] <- plotPhase()
         dev.off()
       }
@@ -2536,7 +2536,7 @@ SSplotComparisons <-
     ##   if(verbose) message("subplot 19: growth, females\n")
     ##   if(plot) plotgrowth(sex='f')
     ##   if(print){
-    ##     pngfun_comparisons("compare19_growth_females.png", filenameprefix = filenameprefix, par = par)
+    ##     pngfun_comparisons("compare19_growth_females.png")
     ##     plotgrowth(sex='f')
     ##     dev.off()
     ##   }
@@ -2547,7 +2547,7 @@ SSplotComparisons <-
     ##   if(verbose) message("subplot 20: growth, males\n")
     ##   if(plot) plotgrowth(sex='m')
     ##   if(print){
-    ##     pngfun_comparisons("compare20_growth_males.png", filenameprefix = filenameprefix, par = par)
+    ##     pngfun_comparisons("compare20_growth_males.png")
     ##     plotgrowth(sex='m')
     ##     dev.off()
     ##   }
