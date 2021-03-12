@@ -14,17 +14,33 @@ pngfun(
   res,
   ptsize,
   caption = NA,
-  alt_text = NA,
-  filenameprefix = "",
-  par = NULL
+  alt_text = NA
 )
 }
 \arguments{
+\item{plotinfo}{table of information about all plots}
+
 \item{file}{filename to write to (including .png extension)}
+
+\item{plotdir}{directory where plots will be written}
+
+\item{pwidth}{Width of plots printed to files in units of \code{punits}.}
+
+\item{pheight}{Height of plots printed to files in units of \code{punits}.}
+
+\item{punits}{Units for \code{pwidth} and \code{pheight}. Can be "px"
+(pixels), "in" (inches), "cm" (centimeters), or "mm" (millimeters).}
+
+\item{res}{Resolution of plots printed to files.
+The default is \code{res = 300}.}
+
+\item{ptsize}{Point size for plotted text in plots printed to files (see
+\code{help("png")} in R for details).}
 
 \item{caption}{caption for the image}
 
-\item{alt_text}{alternative text for screen readers (may match caption in some cases)}
+\item{alt_text}{alternative text for screen readers
+(if left as NA then will be set based on the caption)}
 }
 \description{
 this was previously contained within each of the SSplotXXX() functions.

@@ -227,9 +227,11 @@ SSplotSexRatio <-
                 }
               }
               file <- paste0(filenamestart, filename_fltmkt, pagetext, ".png")
+              caption <- paste0(caption, caption_count, caption_extra)
               plotinfo <- pngfun(
-                file = file,
-                caption = paste0(caption, caption_count, caption_extra)
+                plotinfo = plotinfo, file = file, plotdir = plotdir, pwidth = pwidth,
+                pheight = pheight, punits = punits, res = res, ptsize = ptsize,
+                caption = caption
               )
               tempfun(ipage = ipage, ...)
               dev.off()

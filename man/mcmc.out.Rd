@@ -92,12 +92,13 @@ mcmc.df <- SSgetMCMC(
   keystrings = c("NatM", "R0", "steep", "Q_extraSD"),
   nuisancestrings = c("Objective_function", "SSB_", "InitAge", "RecrDev")
 )
-mcmc.out("mcmcRun", run = "", numparams = 4, closeall = F)
+mcmc.out("mcmcRun", run = "", numparams = 4, closeall = FALSE)
 
 # Or for more control
 par(mar = c(5, 3.5, 0, 0.5), oma = c(0, 2.5, 0.2, 0))
-mcmc.out("mcmcRun", run = "", numparams = 1, closeall = F, new = F, colNames = c("NatM_p_1_Fem_GP_1"))
-mtext("M (natural mortality)", side = 2, outer = T, line = 1.5, cex = 1.1)
+mcmc.out("mcmcRun", run = "", numparams = 1, closeall = FALSE, new = FALSE,
+         colNames = c("NatM_p_1_Fem_GP_1"))
+mtext("M (natural mortality)", side = 2, outer = TRUE, line = 1.5, cex = 1.1)
 }
 }
 \seealso{

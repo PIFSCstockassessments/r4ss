@@ -7,10 +7,18 @@
 #' with the filename and caption for each new plot
 #' Note: this just opens the png device which needs to be closed via dev.off()
 #' outside this function
-#' 
+#'
+#' @param plotinfo table of information about all plots
 #' @param file filename to write to (including .png extension)
+#' @param plotdir directory where plots will be written
+#' @template pwidth
+#' @template pheight
+#' @template punits
+#' @template res
+#' @template ptsize
 #' @param caption caption for the image
-#' @param alt_text alternative text for screen readers (may match caption in some cases)
+#' @param alt_text alternative text for screen readers
+#' (if left as NA then will be set based on the caption)
 #' @author Ian G. Taylor
 
 pngfun <- function(plotinfo,
@@ -22,9 +30,7 @@ pngfun <- function(plotinfo,
                    res,
                    ptsize,
                    caption = NA,
-                   alt_text = NA,
-                   filenameprefix = "",
-                   par = NULL) {
+                   alt_text = NA) {
 
   # replace any slashes (as in 'Eggs/kg_inter_Fem')
   file <- gsub(pattern = "/", replacement = "_per_", x = file, fixed = TRUE)

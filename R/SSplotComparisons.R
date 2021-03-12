@@ -117,11 +117,11 @@
 #' 0 to remove)
 #' @param sprtarg Target value for SPR-ratio where line is drawn in the SPR
 #' plots and phase plot.
-#' @param pwidth Width of plot
-#' @param pheight Height of plot
-#' @param punits Units for PNG file
+#' @template pwidth
+#' @template pheight
+#' @template punits
 #' @template res
-#' @param ptsize Point size for PNG file
+#' @template ptsize
 #' @param plotdir Directory where PNG or PDF files will be written. By default
 #' it will be the directory where the model was run.
 #' @param filenameprefix Additional text to append to PNG or PDF file names.
