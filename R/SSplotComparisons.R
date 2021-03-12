@@ -263,7 +263,10 @@ SSplotComparisons <-
     meanRecWarning <- TRUE
     ymax_vec <- rep(NA, 17) # vector of ymax values for each plot
 
-    # local version of pngfun
+    # local version of pngfun which doesn't related to plotinfo and
+    # also adds control over 'filenameprefix' and 'par',
+    # (where the code is not following good practices and
+    # those arguments are not formally passed to the function)
     pngfun_comparisons <- function(file) {
       # if extra text requested, add it before extention in file name
       file <- paste0(filenameprefix, file)
@@ -2387,7 +2390,7 @@ SSplotComparisons <-
             "compare13_indices",
             index_plot_suffix[iindex],
             ".png"
-          ), filenameprefix = filenameprefix, par = par)
+          ))
           ymax_vec[13] <- plotIndices(log = FALSE, iindex = iindex)
           dev.off()
         }
@@ -2408,7 +2411,7 @@ SSplotComparisons <-
             "compare14_indices_log",
             index_plot_suffix[iindex],
             ".png"
-          ), filenameprefix = filenameprefix, par = par)
+          ))
           ymax_vec[14] <- plotIndices(log = TRUE, iindex = iindex)
           dev.off()
         }
@@ -2490,9 +2493,7 @@ SSplotComparisons <-
               )
             }
             if (print) {
-              pngfun_comparisons(paste("compare16_densities_", name, ".png", sep = ""),
-                filenameprefix = filenameprefix, par = par
-              )
+              pngfun_comparisons(paste("compare16_densities_", name, ".png", sep = ""))
               ymax_vec[16] <- plotDensities(
                 parname = name, xlab = xlab,
                 denslwd = densitylwd
@@ -2514,9 +2515,7 @@ SSplotComparisons <-
               )
             }
             if (print) {
-              pngfun_comparisons(paste("compare17_densities_", name, ".png", sep = ""),
-                filenameprefix = filenameprefix, par = par
-              )
+              pngfun_comparisons(paste("compare17_densities_", name, ".png", sep = ""))
               ymax_vec[17] <- plotDensities(
                 parname = name, xlab = xlab,
                 denslwd = densitylwd,
