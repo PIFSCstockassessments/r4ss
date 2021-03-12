@@ -67,18 +67,15 @@ or "psoptim". If not equal to either of these, then optim is used.}
 \item{exclude_forecast}{Exclude forecast values in the estimation of
 alternative bias adjustment inputs?}
 
-\item{pwidth}{Default width of plots printed to files in units of
-\code{punits}. The default is \code{pwidth=6.5}.}
+\item{pwidth}{Width of plots printed to files in units of \code{punits}.}
 
-\item{pheight}{Default heigth of plots printed to files in units of
-\code{punits}. The default is \code{pwidth=5.0}.}
+\item{pheight}{Height of plots printed to files in units of \code{punits}.}
 
 \item{punits}{Units for \code{pwidth} and \code{pheight}. Can be "px"
-(pixels), "in" (inches), "cm" (centimeters), or "mm" (millimeters).
-The default is \code{punits="in"}.}
+(pixels), "in" (inches), "cm" (centimeters), or "mm" (millimeters).}
 
 \item{ptsize}{Point size for plotted text in plots printed to files (see
-\code{help("png")} in R for details). The default is \code{ptsize=10}.}
+\code{help("png")} in R for details).}
 
 \item{res}{Resolution of plots printed to files.
 The default is \code{res = 300}.}
