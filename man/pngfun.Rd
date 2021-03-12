@@ -4,7 +4,20 @@
 \alias{pngfun}
 \title{Open png device and return info on the file being created}
 \usage{
-pngfun(file, caption = NA, alt_text = NA, filenameprefix = "", par = NULL)
+pngfun(
+  plotinfo,
+  file,
+  plotdir,
+  pwidth,
+  pheight,
+  punits,
+  res,
+  ptsize,
+  caption = NA,
+  alt_text = NA,
+  filenameprefix = "",
+  par = NULL
+)
 }
 \arguments{
 \item{file}{filename to write to (including .png extension)}

@@ -536,7 +536,7 @@ SSplotCatch <-
         for (i in 1:length(badstrings)) {
           myname <- gsub(pattern = badstrings[i], replacement = " ", x = myname, fixed = T)
         }
-        filename <- paste0("catch", myname, ".png")
+        file <- paste0("catch", myname, ".png")
         caption <- substring(myname, 3)
         if (exists("equil.catch.vec") &&
           max(equil.catch.vec, na.rm = TRUE) > 0 &&
@@ -547,15 +547,21 @@ SSplotCatch <-
             " divided equally among all seasons."
           )
         }
-        plotinfo2 <- pngfun(filename, caption = caption)
+        plotinfo2 <- pngfun(
+          plotinfo = plotinfo, file = file, plotdir = plotdir, pwidth = pwidth,
+          pheight = pheight, punits = punits, res = res, ptsize = ptsize,
+          caption = caption
+        )
         # "a" is TRUE/FALSE indicator that plot got produced
         a <- makeplots(isubplot)
         dev.off()
         # delete empty files if they somehow got created
-        if (!a & file.exists(filename)) {
-          file.remove(filename)
+        if (!a & file.exists(file)) {
+          file.remove(file)
         }
-        if (a) plotinfo <- plotinfo2
+        if (a) {
+          plotinfo <- plotinfo2
+        }
       }
     }
 

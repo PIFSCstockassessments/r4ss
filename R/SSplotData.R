@@ -427,7 +427,12 @@ SSplotData <- function(replist,
     }
     if (print) {
       caption <- "Data presence by year for each fleet and data type."
-      plotinfo <- pngfun(file = "data_plot.png", caption = caption)
+      file <- "data_plot.png"
+      plotinfo <- pngfun(
+        plotinfo = plotinfo, file = file, plotdir = plotdir, pwidth = pwidth,
+        pheight = pheight, punits = punits, res = res, ptsize = ptsize,
+        caption = caption
+      )
       plotdata(datasize = FALSE)
       dev.off()
     }
@@ -460,7 +465,12 @@ SSplotData <- function(replist,
           "things like index uncertainty)."
         )
       }
-      plotinfo <- pngfun(file = "data_plot2.png", caption = caption)
+      file = "data_plot2.png"
+      plotinfo <- pngfun(
+        plotinfo = plotinfo, file = file, plotdir = plotdir, pwidth = pwidth,
+        pheight = pheight, punits = punits, res = res, ptsize = ptsize,
+        caption = caption
+      )
       plotdata(datasize = TRUE)
       dev.off()
     }

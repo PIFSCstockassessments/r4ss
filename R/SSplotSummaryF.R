@@ -68,7 +68,12 @@ SSplotSummaryF <- function(replist, yrs = "all", Ftgt = NA, ylab = "Summary Fish
   if (plot) plotfun()
   if (print) {
     caption <- "Summary F (definition of F depends on setting in starter.ss)"
-    plotinfo <- pngfun(file = "ts_summaryF.png", caption = caption)
+    file <- "ts_summaryF.png"
+    plotinfo <- pngfun(
+      plotinfo = plotinfo, file = file, plotdir = plotdir, pwidth = pwidth,
+      pheight = pheight, punits = punits, res = res, ptsize = ptsize,
+      caption = caption
+    )
     plotfun()
     dev.off()
     if (!is.null(plotinfo)) plotinfo[["category"]] <- "Timeseries"
