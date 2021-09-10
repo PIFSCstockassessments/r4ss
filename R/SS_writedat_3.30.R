@@ -206,10 +206,10 @@ SS_writedat_3.30 <- function(datlist,
   wl("Nsubseasons")
   wl("spawn_month")
   if(isTRUE(d[["Ngenders"]] != d[["Nsexes"]])) {
-    warning("List element `Ngenders` is in the process of being deprecated and ", 
-            "replaced by the `Nsexes`. In the meantime, r4ss::SS_writedat_3.30 will", 
-            " warn when `Ngenders` and `Nsexes` do not have the same value and", 
-            " only Nsexes will be written.")
+    warning("List element `Ngenders` is in the process of being deprecated and\n",
+            "replaced by the `Nsexes`. In the meantime, r4ss::SS_writedat_3.30 will\n",
+            "warn when `Ngenders` and `Nsexes` do not have the same value and\n",
+            "only Nsexes will be written.")
   }
   wl("Nsexes")
   wl("Nages")

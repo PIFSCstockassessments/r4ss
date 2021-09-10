@@ -196,10 +196,10 @@ SS_writedat_3.24 <- function(datlist,
   # writeLines(paste(paste(datlist[["se_log_catch"]],collapse=" "),"#_se of log(catch) only used for init_eq_catch and for Fmethod 2 and 3"))
   wl.vector("se_log_catch", comment = "#_se of log(catch) only used for init_eq_catch and for Fmethod 2 and 3")
   if(isTRUE(datlist[["Ngenders"]] != datlist[["Nsexes"]])) {
-    warning("List element `Ngenders` is in the process of being deprecated and ", 
-            "replaced by the `Nsexes`. In the meantime, r4ss::SS_writedat_3.24 will", 
-            " warn when `Ngenders` and `Nsexes` do not have the same value and", 
-            " only Nsexes will be written.")
+    warning("List element `Ngenders` is in the process of being deprecated and\n",
+            "replaced by the `Nsexes`. In the meantime, r4ss::SS_writedat_3.24 will\n",
+            "warn when `Ngenders` and `Nsexes` do not have the same value and\n",
+            "only Nsexes will be written.")
   }
   wl("Nsexes")
   wl("Nages")
